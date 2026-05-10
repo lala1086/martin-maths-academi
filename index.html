@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Maths Academi - Cours Particuliers de Mathématiques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        /* Header/Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 20px 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        /* Services */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Cantons */
+        .cantons {
+            background: #f9f9f9;
+        }
+
+        .cantons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .canton-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .canton-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-left-color: white;
+        }
+
+        .canton-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .canton-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Methodology */
+        .methodology {
+            background: white;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .method-step {
+            text-align: center;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .method-step:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .method-step h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .method-step:hover h3 {
+            color: white;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .method-step:hover .step-number {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #f9f9f9;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-desc {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        .price-features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .btn-price {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-price:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Contact */
+        .contact {
+            background: #f9f9f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item strong {
+            color: #667eea;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+            text-align: center;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card,
+        .canton-card,
+        .testimonial-card,
+        .pricing-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#cantons">Cantons</a></li>
+            <li><a href="#methodologie">Méthodologie</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1>🎓 Martin Maths Academi</h1>
+            <p>Excellez en Mathématiques avec des Cours Particuliers Personnalisés</p>
+            <div class="stats">
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Élèves Satisfaits</p>
+                </div>
+                <div class="stat">
+                    <h3>95%</h3>
+                    <p>Taux de Réussite</p>
+                </div>
+                <div class="stat">
+                    <h3>7</h3>
+                    <p>Cantons Couverts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>📚 Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Cours à l'Unité</h3>
+                    <p>Des cours ponctuels pour progresser rapidement sur des sujets spécifiques. Parfait pour les révisions ciblées et la préparation d'examens.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Pack Examen</h3>
+                    <p>Une préparation intensive pour l'examen final. Accès à des ressources complètes, exercices corrigés et sessions de révision.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Abonnement Annuel</h3>
+                    <p>Un suivi régulier tout au long de l'année scolaire. Idéal pour consolider les bases et progresser de manière constante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cantons -->
+    <section class="cantons" id="cantons">
+        <div class="container">
+            <h2>🗺️ Cantons Desservis</h2>
+            <div class="cantons-grid">
+                <div class="canton-card">
+                    <h3>🇨🇭 Genève</h3>
+                    <p>Cours disponibles à Genève et région</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Vaud</h3>
+                    <p>Couverture complète du canton de Vaud</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Valais</h3>
+                    <p>Services dans tout le Valais</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Bern</h3>
+                    <p>Cours particuliers en région bernoise</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Zürich</h3>
+                    <p>Présence active à Zürich</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Basel</h3>
+                    <p>Couverture de la région bâloise</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇨🇭 Lucerne</h3>
+                    <p>Disponibilité à Lucerne et environs</p>
+                </div>
+                <div class="canton-card">
+                    <h3>🇫🇷 France</h3>
+                    <p>Cours aussi disponibles en France</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="methodology" id="methodologie">
+        <div class="container">
+            <h2>🎯 Notre Méthodologie</h2>
+            <div class="methodology-grid">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <h3>Évaluation</h3>
+                    <p>Analyse complète du niveau et des lacunes</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <h3>Planification</h3>
+                    <p>Plan d'action personnalisé et objectifs clairs</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <h3>Enseignement</h3>
+                    <p>Cours adaptés au rythme de l'élève</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <h3>Suivi</h3>
+                    <p>Progrès suivis et ajustements continus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <h2>💬 Témoignages d'Élèves</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Martin m'a aidé à progresser rapidement en mathématiques. Ses méthodes sont claires et efficaces!"</p>
+                    <p class="testimonial-author">- Sophie, Genève</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Grâce aux cours de Martin, j'ai réussi mon examen de maths. Très patient et professionnel!"</p>
+                    <p class="testimonial-author">- Jean, Vaud</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Les explications sont simples et adaptées. Je recommande vivement Martin pour les cours de maths!"</p>
+                    <p class="testimonial-author">- Marie, Valais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="tarifs">
+        <div class="container">
+            <h2>💰 Nos Tarifs</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Cours à l'Unité</h3>
+                    <div class="price">CHF 50</div>
+                    <p class="price-desc">par heure</p>
+                    <ul class="price-features">
+                        <li>Cours personnalisé</li>
+                        <li>Flexibilité horaire</li>
+                        <li>Matériel fourni</li>
+                    </ul>
+                    <button class="btn-price">Réserver</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Pack Examen</h3>
+                    <div class="price">CHF 250</div>
+                    <p class="price-desc">5 cours</p>
+                    <ul class="price-features">
+                        <li>5 séances intensives</li>
+                        <li>Ressources complètes</li>
+                        <li>Support par email</li>
+                    </ul>
+                    <button class="btn-price">Acheter</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Abonnement Annuel</h3>
+                    <div class="price">CHF 400</div>
+                    <p class="price-desc">par mois</p>
+                    <ul class="price-features">
+                        <li>4 cours par mois</li>
+                        <li>Priorité de réservation</li>
+                        <li>Suivi personnalisé</li>
+                    </ul>
+                    <button class="btn-price">S'abonner</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>📧 Nous Contacter</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informations de Contact</h3>
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong>
+                        <p>martin@martinmaths.ch</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📱 WhatsApp:</strong>
+                        <p>+41 76 XXX XX XX</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🎵 TikTok:</strong>
+                        <p>@MartinMathsAcademi</p>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍 Disponibilité:</strong>
+                        <p>Du lundi au samedi<br>9h00 - 20h00</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Envoyer le Message</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Martin Maths Academi. Tous droits réservés.</p>
+        <p>Cours particuliers de mathématiques pour tous les niveaux</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form validation and submission
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Validation
+            if (!name || !email || !subject || !message) {
+                showMessage('Veuillez remplir tous les champs', 'error');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Veuillez entrer une adresse email valide', 'error');
+                return;
+            }
+
+            // Success message
+            showMessage('Merci! Votre message a été envoyé avec succès. Nous vous répondrons bientôt.', 'success');
+
+            // Reset form
+            form.reset();
+
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .canton-card, .testimonial-card, .pricing-card, .method-step').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
